@@ -20,7 +20,7 @@ public class ProductPriceController {
 	@Autowired
 	private ProductService productService;
 
-	@PostMapping
+	@PostMapping("/price")
 	public ResponseEntity<Double> calculatePrice(@RequestBody List<Item> items) {
 		Double totalPrice = productService.calculatePrice(items);
 		return new ResponseEntity<Double>(totalPrice, HttpStatus.OK);
