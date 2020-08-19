@@ -9,7 +9,7 @@ import lombok.Setter;
 @Builder
 public class Item {
 	private String skuCode;
-	private Integer quantity;
+	private Integer reqQuantity;
 	private Integer offerQuantity;
 	private Double offerPrice;
 	private Double totalPrice;
@@ -19,7 +19,7 @@ public class Item {
 	public Item(String skuCode, Integer reqQuantity) {
 		super();
 		this.skuCode = skuCode;
-		this.quantity = reqQuantity;
+		this.reqQuantity = reqQuantity;
 	}
 	public String getSkuCode() {
 		return skuCode;
@@ -27,11 +27,11 @@ public class Item {
 	public void setSkuCode(String skuCode) {
 		this.skuCode = skuCode;
 	}
-	public Integer getQuantity() {
-		return quantity;
+	public Integer getReqQuantity() {
+		return reqQuantity;
 	}
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
+	public void setReqQuantity(Integer reqQuantity) {
+		this.reqQuantity = reqQuantity;
 	}
 	public Integer getOfferQuantity() {
 		return offerQuantity;

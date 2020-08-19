@@ -56,13 +56,13 @@ public class ProductService {
 	}
 
 	private void setPrice(Item item) {
-		Double nonOfferQty = 0.00 + item.getQuantity();
-		Double totalOfferPrice =0.00;
+		Double nonOfferQty = 0.00 + item.getReqQuantity();
+		Double totalOfferPrice = 0.00;
 		Double totalPrice = 0.00;
-		if (item.getOfferQuantity()!=null && item.getOfferQuantity() > 0) {
-			Double offerOnQty = Math.floor(item.getQuantity() / item.getOfferQuantity());
+		if (item.getOfferQuantity() != null && item.getOfferQuantity() > 0) {
+			Double offerOnQty = Math.floor(item.getReqQuantity() / item.getOfferQuantity());
 			totalOfferPrice = offerOnQty * item.getOfferPrice();
-			nonOfferQty = nonOfferQty - (offerOnQty*item.getOfferQuantity());
+			nonOfferQty = nonOfferQty - (offerOnQty * item.getOfferQuantity());
 		}
 		totalPrice = (nonOfferQty * itemPriceMap.get(item.getSkuCode())) + totalOfferPrice;
 		item.setTotalPrice(totalPrice);
