@@ -1,6 +1,6 @@
 package com.scm.promotion.controller;
 
-import java.util.Map;
+import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,20 +9,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.scm.promotion.service.ProductService;
+import com.scm.promotion.model.Rule;
+import com.scm.promotion.service.rules.RuleEngine;
 
 import lombok.RequiredArgsConstructor;
 
-
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/rules")
 @RequiredArgsConstructor
-public class ProductPriceController {
-	private final ProductService productService;
+public class RuleController {
+	private final RuleEngine ruleEngine;
 
-	@PostMapping("/price")
-	public ResponseEntity<Double> calculatePrice(@RequestBody Map<String, Integer> items) {
-		Double totalPrice = productService.calculatePrice(items);
-		return new ResponseEntity<Double>(totalPrice, HttpStatus.OK);
+	@PostMapping("/add")
+	public ResponseEntity<Void> registerRules(@RequestBody List<Rule> rules) {
+		ruleEngine.registerRules(rules);
+		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 }
