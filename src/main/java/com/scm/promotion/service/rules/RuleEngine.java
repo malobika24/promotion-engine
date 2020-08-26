@@ -76,7 +76,7 @@ public class RuleEngine implements RuleInterface<Map<String, Integer>, Double> {
 											* Math.floor(minReqValue / condRule.getQuantity()))).intValue());
 
 						});
-
+						//Apply offer in multiples of offr quantity 
 						output.set(output.get() + Math.floor(minReqValue / cond.getQuantity()) * rule.getOutcome());
 						log.info("Offer Applied: Rule Name=" + rule.getName()+" Price=" + output.get() );
 					}
